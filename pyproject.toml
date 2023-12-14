@@ -1,0 +1,49 @@
+[tool.poetry]
+name = "hack-devrel"
+version = "0.1.0"
+description = ""
+authors = ["Your Name <you@example.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.10"
+django = "4.2"
+djangorestframework = "^3.14.0"
+python-dotenv = "^1.0.0"
+psycopg2-binary = "^2.9.9"
+drf-spectacular = "^0.27.0"
+django-cors-headers = "^4.3.1"
+djoser = "^2.2.2"
+gunicorn = "^21.2.0"
+
+
+[tool.poetry.group.dev.dependencies]
+black = "^23.12.0"
+ruff = "^0.1.8"
+isort = "^5.13.2"
+pre-commit = "^3.6.0"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.black]
+target-version = ['py310']
+exclude = 'migrations'
+line_length = 79
+
+[tool.isort]
+line_length = 79
+skip = ['migrations', 'settings']
+multi_line_output = 3
+include_trailing_comma = true
+force_grid_wrap = 0
+combine_as_imports = true
+
+[tool.ruff]
+target-version = "py310"
+exclude = [
+    "*migrations/",
+    "settings.py",
+]
+line-length = 79
