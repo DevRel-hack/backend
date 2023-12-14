@@ -9,8 +9,6 @@ RUN pip3 install poetry && curl -sSL 'https://install.python-poetry.org' | pytho
 RUN poetry config virtualenvs.create false \
   && poetry install --without dev --no-interaction --no-ansi
 
-RUN python -m nltk.downloader wordnet
-
 COPY . .
 
 ENTRYPOINT ["sh", "entrypoint.sh"]
