@@ -142,13 +142,13 @@ SPECTACULAR_SETTINGS = {
     "SWAGGER_UI_DIST": "https://cdn.jsdelivr.net/npm/swagger-ui-dist@5.9.3",
 }
 
-DJOSER = {
-    "SERIALIZERS": {
-        "user_create": "apps.api.v1.users.serializers.MyUserCreateSerializer",
-        "current_user": "apps.api.v1.users.serializers.MeUserSerializer",
-    },
-    "HIDE_USERS": True,
-}
+# DJOSER = {
+#     "SERIALIZERS": {
+#         "user_create": "apps.api.v1.users.serializers.CreateUserSerializer",
+#         "current_user": "apps.api.v1.users.serializers.MeUserSerializer",
+#     },
+#     "HIDE_USERS": True,
+# }
 
 SIMPLE_JWT = {
     "ACCESS_TOKEN_LIFETIME": timedelta(hours=1 * 24 * 5),  # пока пишем код
