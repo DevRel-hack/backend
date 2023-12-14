@@ -23,7 +23,7 @@ jobs:
         with:
           push: true
           context: ./
-          tags: ${{ secrets.DOCKER_USERNAME }}/devrel_back_back:latest 
+          tags: ${{ secrets.DOCKER_USERNAME }}/devrel_back:latest 
   
   deploy:
     runs-on: ubuntu-latest
