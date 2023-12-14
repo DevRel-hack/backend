@@ -314,3 +314,4 @@ sketch
 pyvenv.cfg
 pip-selfcheck.json
 /.ruff_cache/
+.vscode/
