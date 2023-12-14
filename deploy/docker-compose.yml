@@ -25,7 +25,7 @@ services:
     image: ratarov/devrel_front:latest
     container_name: devrel_front
     volumes:
-      - front:/app/result_build/
+      - ./front:/app/result_build/
     depends_on:
       - backend
     env_file:
@@ -38,7 +38,7 @@ services:
       - "80:80"
     volumes:
       - ./nginx.conf:/etc/nginx/conf.d/default.conf
-      - front/build:/usr/share/nginx/html/
+      - ./front/build:/usr/share/nginx/html/
       - static_data:/var/html/static/
     depends_on:
       - backend
@@ -48,4 +48,3 @@ services:
 volumes:
   db_value:
   static_data:
-  front:
