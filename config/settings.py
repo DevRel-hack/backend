@@ -35,7 +35,11 @@ THIRD_PARTY_APPS = [
 
 LOCAL_APPS = [
     "apps.users.apps.UsersConfig",
+    "apps.specialists.apps.SpecialistsConfig",
     "apps.api.apps.ApiConfig",
+    "apps.core.apps.CoreConfig",
+    "apps.events.apps.EventsConfig",
+    "apps.attributes.apps.AttributesConfig",
 ]
 
 INSTALLED_APPS = THIRD_PARTY_APPS + DJANGO_APPS + LOCAL_APPS
