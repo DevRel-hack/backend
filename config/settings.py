@@ -162,3 +162,6 @@ SIMPLE_JWT = {
     "REFRESH_TOKEN_LIFETIME": timedelta(weeks=10),
     "AUTH_HEADER_TYPES": ("JWT",),
 }
+
+ADMIN_EMAIL = os.getenv("ADMIN_EMAIL", default="admin@admin.admin")
+ADMIN_PASSWORD = os.getenv("ADMIN_PASSWORD", default="Password-123")
