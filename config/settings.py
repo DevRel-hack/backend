@@ -138,6 +138,8 @@ REST_FRAMEWORK = {
     "DEFAULT_SCHEMA_CLASS": "drf_spectacular.openapi.AutoSchema",
     "DATE_FORMAT": "%d.%m.%Y",
     "DATETIME_FORMAT": "%d.%m.%Y %H:%M",
+    "DATETIME_INPUT_FORMATS": ["%d.%m.%Y %H:%M"],
+    "DATETIME_FORMAT": "%d.%m.%Y %H:%M",
 }
 
 SPECTACULAR_SETTINGS = {
