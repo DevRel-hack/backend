@@ -4,6 +4,13 @@ from apps.specialists.crud import specialist_exists
 from apps.specialists.models import Specialist
 from apps.specialists.services import add_specialist, edit_specialist
 
+from ..attributes.serializers import (
+    ToolSerializer,
+    CitySerializer,
+    JobSerializer,
+    GradeSerializer,
+)
+
 
 class SpecialistSerializer(serializers.ModelSerializer):
     class Meta:
@@ -31,3 +38,11 @@ class SpecialistSerializer(serializers.ModelSerializer):
 
     def update(self, instance, validated_data):
         return edit_specialist(instance, validated_data)
+
+    def to_representation(self, instance):
+        rep = super().to_representation(instance)
+        rep["tools"] = ToolSerializer(instance.tools, many=True).data
+        rep["city"] = CitySerializer(instance.city).data
+        rep["job"] = JobSerializer(instance.job).data
+        rep["grade"] = GradeSerializer(instance.grade).data
+        return rep
