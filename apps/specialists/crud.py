@@ -1,6 +1,8 @@
 from collections import OrderedDict
 
-from django.db.models import QuerySet
+from django.db.models import QuerySet, Prefetch
+
+from apps.events.models import Participant
 
 from .models import Specialist
 
@@ -9,6 +11,22 @@ def list_specialists() -> QuerySet[Specialist]:
     return Specialist.objects.select_related(
         "city", "job", "grade"
     ).prefetch_related("tools")
+
+
+def retrieve_specialist(spec_id: int):
+    return (
+        Specialist.objects.filter(id=spec_id)
+        .select_related("city", "job", "grade")
+        .prefetch_related(
+            "tools",
+            Prefetch(
+                "participants",
+                queryset=Participant.objects.filter(
+                    specialist_id=spec_id
+                ).select_related("event", "role"),
+            ),
+        )
+    )
 
 
 def specialist_exists(email: str) -> bool:

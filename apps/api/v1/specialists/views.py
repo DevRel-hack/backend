@@ -8,7 +8,7 @@ from apps.specialists.services import upload_specialists
 
 from .filters import SpecialistFilterset
 from .schema import specialists_schema
-from .serializers import SpecialistSerializer
+from . import serializers as ser
 
 
 @extend_schema_view(**specialists_schema)
@@ -16,9 +16,13 @@ class SpecialistsViewset(viewsets.ModelViewSet):
     """Работа со специалистами."""
 
     queryset = list_specialists()
-    serializer_class = SpecialistSerializer
     http_method_names = ["get", "patch", "post", "delete"]
     filterset_class = SpecialistFilterset
+
+    def get_serializer_class(self):
+        if self.action == "retrieve":
+            return ser.RetrieveSpecialistSerializer
+        return ser.SpecialistSerializer
 
     @action(methods=["post"], detail=False)
     def upload_specialists(self, request):
