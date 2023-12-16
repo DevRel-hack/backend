@@ -12,4 +12,4 @@ class EventFilterset(filters.FilterSet):
 
     class Meta:
         model = Event
-        fields = ("title", "tag", "status")
+        fields = ("title", "tag", "status", "is_internal")

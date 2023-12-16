@@ -59,6 +59,11 @@ events_schema = {
                 type=list[int],
                 description="Мультивыбор по статусу",
             ),
+            OpenApiParameter(
+                name="is_internal",
+                type=bool,
+                description="Внутренний митап",
+            ),
         ],
     ),
     "retrieve": extend_schema(
