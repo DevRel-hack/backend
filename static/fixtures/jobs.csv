@@ -1,32 +1,11 @@
 id;title
-1;Backend developer
-2;Frontend developer
-3;Fullstack developer
-4;Analyst
-5;Analytics
-6;Android developer
-7;Architect
-8;Cloud operator
-9;Copyrighter
-10;CTO
-11;Data analyst
-12;Data engineer
-13;Database developer
-14;Database engineer
-15;Database manager
-16;Database specialist
-17;Designer
-18;DevRel
-19;Flutter developer
-20;Game designer
-21;Game designer
-22;Game developer
-23;HR
-24;iOS developer
-25;Manager
-26;Product manager
-27;Product owner
-28;QA
-29;Researcher
-30;UI/UX designer
-31;Web developer
+1;Backend
+2;Frontend
+3;Fullstack
+4;DataScience
+5;Design
+6;DevOps
+7;Management
+8;Mobile
+9;GameDev
+10;DevRel

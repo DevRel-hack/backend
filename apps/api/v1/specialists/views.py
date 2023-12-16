@@ -6,6 +6,7 @@ from rest_framework.decorators import action
 from apps.specialists.crud import list_specialists
 from apps.specialists.services import upload_specialists
 
+from .filters import SpecialistFilterset
 from .schema import specialists_schema
 from .serializers import SpecialistSerializer
 
@@ -17,6 +18,7 @@ class SpecialistsViewset(viewsets.ModelViewSet):
     queryset = list_specialists()
     serializer_class = SpecialistSerializer
     http_method_names = ["get", "patch", "post", "delete"]
+    filterset_class = SpecialistFilterset
 
     @action(methods=["post"], detail=False)
     def upload_specialists(self, request):
