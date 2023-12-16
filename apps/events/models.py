@@ -5,23 +5,8 @@ from apps.core.models import BaseModel
 from apps.specialists.models import Specialist
 
 
-# class EventType(TitledModel):
-#     """Модель типа мероприятия."""
-
-#     class Meta:
-#         verbose_name = "Тип мероприятия"
-#         verbose_name_plural = "Типы мероприятий"
-
-
 class Event(BaseModel):
     """Модель Мероприятий."""
-
-    class Status(models.TextChoices):
-        IDEA = "idea", "Проработка"
-        CONC = "conc", "Согласование"
-        PREP = "prep", "Подготовка"
-        OVER = "over", "Завершено"
-        CANCEL = "canc", "Отменено"
 
     class Format(models.TextChoices):
         ONLINE = "on", "Online"

@@ -1,14 +1,15 @@
-from drf_spectacular.utils import extend_schema_view, extend_schema
-from rest_framework import viewsets, response, generics
+from drf_spectacular.utils import extend_schema, extend_schema_view
+from rest_framework import generics, response, viewsets
 
-from apps.events.crud import list_events, retrieve_event, list_key_participants
+from apps.events.crud import list_events, list_key_participants, retrieve_event
 
+from . import serializers as ser
+from .filters import EventFilterset
 from .schema import (
     events_schema,
     list_participants_schema,
     single_participants_schema,
 )
-from . import serializers as ser
 
 
 @extend_schema_view(**events_schema)
@@ -16,6 +17,7 @@ class EventViewset(viewsets.ModelViewSet):
     """Работа с мероприятиями."""
 
     http_method_names = ["get", "patch", "post", "delete"]
+    filterset_class = EventFilterset
 
     def get_serializer_class(self):
         if self.action == "list":

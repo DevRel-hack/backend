@@ -1,4 +1,8 @@
-from drf_spectacular.utils import extend_schema, OpenApiExample
+from drf_spectacular.utils import (
+    extend_schema,
+    OpenApiExample,
+    OpenApiParameter,
+)
 
 from . import serializers as ser
 
@@ -38,6 +42,22 @@ events_schema = {
                 "Ответ",
                 value=[response_sample],
                 response_only=True,
+            ),
+        ],
+        parameters=[
+            OpenApiParameter(
+                name="tag",
+                type=list[int],
+                description="Мультивыбор по тегам",
+            ),
+            OpenApiParameter(
+                name="title",
+                description="Поиск по части названия",
+            ),
+            OpenApiParameter(
+                name="status",
+                type=list[int],
+                description="Мультивыбор по статусу",
             ),
         ],
     ),
