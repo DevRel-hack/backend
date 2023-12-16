@@ -1,6 +1,6 @@
 from collections import OrderedDict
 
-from django.db.models import QuerySet, Subquery, OuterRef
+from django.db.models import QuerySet, Prefetch
 
 from .models import Event, Participant
 
@@ -10,11 +10,13 @@ def list_events() -> QuerySet[Event]:
 
 
 def retrieve_event(event_id: int) -> Event:
-    return Event.objects.filter(id=event_id).annotate(
-        key_parts=Subquery(
-            Participant.objects.filter(event_id=OuterRef("pk")).select_related(
-                "specialist", "role"
-            )
+    # исправить запросы
+    return Event.objects.filter(id=event_id).prefetch_related(
+        Prefetch(
+            "participants",
+            queryset=Participant.objects.filter(event_id=event_id)
+            .exclude(role_id=1)
+            .select_related("specialist", "role"),
         )
     )
 
@@ -29,3 +31,20 @@ def update_event(event: Event, data: OrderedDict) -> Event:
             setattr(event, key, value)
     event.save()
     return event
+
+
+def list_key_participants(event_id: int) -> QuerySet[Participant]:
+    return (
+        Participant.objects.filter(event_id=event_id)
+        .exclude(role_id=1)
+        .select_related("specialist", "role")
+    )
+
+
+# def list_key_participants() -> QuerySet[Participant]:
+#     a = (
+#         Participant.objects.all()
+#         .exclude(role_id=1)
+#         .select_related("specialist", "role")
+#     )
+#     return a

@@ -1,5 +1,7 @@
 from drf_spectacular.utils import extend_schema, OpenApiExample
 
+from . import serializers as ser
+
 
 request_sample = {
     "status": 1,
@@ -60,4 +62,25 @@ events_schema = {
     ),
     "partial_update": extend_schema(summary="Изменение мероприятия"),
     "destroy": extend_schema(summary="Удаление мероприятия"),
+}
+
+
+list_participants_schema = {
+    "get": extend_schema(summary="Список участников мероприятия"),
+    "post": extend_schema(
+        summary="Добавление нового участника",
+        request=ser.CreateParticipantSerializer,
+        responses={201: ser.ParticipantSerializer},
+    ),
+}
+
+
+single_participants_schema = {
+    "get": extend_schema(summary="Информация об участнике по ID"),
+    "patch": extend_schema(
+        summary="Изменение участника по ID",
+        request=ser.EditParticipantSerializer,
+        responses={200: ser.ParticipantSerializer},
+    ),
+    "delete": extend_schema(summary="Удаление участника по ID"),
 }
