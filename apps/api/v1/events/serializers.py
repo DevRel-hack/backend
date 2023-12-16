@@ -1,12 +1,18 @@
 from rest_framework import serializers
 
-from apps.events.models import Event
+from apps.events.models import Event, Participant
 from apps.events.services import add_event, edit_event
 
 from ..attributes.serializers import EventStatusSerializer, TagSerializer
 
 
-class EventSerializer(serializers.ModelSerializer):
+class ParticipantSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Participant
+        fields = ("id", "specialist", "role", "comment")
+
+
+class BaseEventSerializer(serializers.ModelSerializer):
     class Meta:
         model = Event
         fields = (
@@ -30,7 +36,22 @@ class EventSerializer(serializers.ModelSerializer):
         return edit_event(instance, validated_data)
 
     def to_representation(self, instance):
-        rep = super().to_representation(instance)
-        rep["status"] = EventStatusSerializer(instance.status).data
-        rep["tags"] = TagSerializer(instance.tags, many=True).data
-        return rep
+        return
+
+
+class ListEventSerializer(BaseEventSerializer):
+    status = EventStatusSerializer()
+    tags = TagSerializer()
+
+
+class RetrieveEventSerializer(BaseEventSerializer):
+    # key_parts = ParticipantSerializer(many=True)
+
+    class Meta(BaseEventSerializer.Meta):
+        # fields = BaseEventSerializer.Meta.fields + ("key_parts",)
+        fields = BaseEventSerializer.Meta.fields
+
+
+class CreateEditEventSerializer(BaseEventSerializer):
+    def to_representation(self, instance):
+        return RetrieveEventSerializer(instance).data

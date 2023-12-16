@@ -1,0 +1,35 @@
+id;first_name;last_name;phone;company;email;is_colleague;city_id;job_id;grade_id
+1;Руслан;Тратата;79991234567;7Eleven;ruslanatarov@gmail.com;1;2;1;2
+2;Максим;Раздва;79991234565;7Eleven;neverinmylife1@unexisting.ru;1;1;3;3
+3;Ольга;Три;79991111111;7Eleven;neverinmylife2@unexisting.ru;1;2;1;2
+4;Андрей;Четырев;79991111112;7Eleven;neverinmylife3@unexisting.ru;1;1;4;4
+5;Екатерина;Пять;79991111113;Чисто тут;neverinmylife4@unexisting.ru;0;1;1;1
+6;Филипп;Январь;79991111114;Чисто там;neverinmylife5@unexisting.ru;0;4;2;1
+7;Елена;Февраль;79991111115;Росэкспо;neverinmylife6@unexisting.ru;0;5;3;2
+8;Антон;Март;79991111116;Альфа банк;neverinmylife7@unexisting.ru;0;2;4;3
+9;Рита;Апрель;79991111117;Тинькофф;neverinmylife8@unexisting.ru;0;1;1;4
+10;Андрей;Май;79991111118;Платон +;neverinmylife9@unexisting.ru;0;3;2;5
+11;Антон;Июнь;79991111119;Компания мечты;neverinmylife10@unexisting.ru;0;6;3;5
+12;Ольга;Июль;79991111120;Делаем все;neverinmylife11@unexisting.ru;0;7;5;4
+13;Оксана;Август;79991111121;ИТ на заказ;neverinmylife12@unexisting.ru;0;8;6;3
+14;Ольга;Сентябрь;79991111122;ИТ на заказ;neverinmylife13@unexisting.ru;0;10;7;2
+15;Денис;Октябрь;79991111123;ИТ на заказ;neverinmylife14@unexisting.ru;0;5;8;1
+16;Артем;Ноябрь;79991111124;Тинькофф;neverinmylife15@unexisting.ru;0;3;9;2
+17;Владислав;Декабрь;79991111125;Сбербанк;neverinmylife16@unexisting.ru;0;3;10;3
+18;Марина;Понедельник;79991111126;Сбербанк;neverinmylife17@unexisting.ru;0;2;9;4
+19;Руслан;Вторник;79991111127;Сбербанк;neverinmylife18@unexisting.ru;0;1;8;1
+20;Максим;Среда;79991111128;Сбербанк;neverinmylife19@unexisting.ru;0;1;7;1
+21;Ольга;Четверг;79991111129;Сбербанк;neverinmylife20@unexisting.ru;0;2;6;2
+22;Андрей;Пятница;79991111130;Сбербанк;neverinmylife21@unexisting.ru;0;8;5;3
+23;Екатерина;Суббота;79991111131;Яндекс;neverinmylife22@unexisting.ru;0;2;11;4
+24;Филипп;Воскресенье;79991111132;Яндекс;neverinmylife23@unexisting.ru;0;1;12;2
+25;Ольга;Ольгова;79991111133;Яндекс;neverinmylife24@unexisting.ru;0;1;13;3
+26;Оксана;Оксанова;79991111134;Яндекс;neverinmylife25@unexisting.ru;0;2;14;4
+27;Денис;Денисов;79991111135;Три тополя;neverinmylife26@unexisting.ru;0;3;16;5
+28;Максим;Максимов;79991111136;Три тополя;neverinmylife27@unexisting.ru;0;3;17;1
+29;Иван;Иванов;79991111137;Газпром;neverinmylife28@unexisting.ru;0;4;1;2
+30;Сергей;Сергеев;79991111138;Газпром;neverinmylife29@unexisting.ru;0;5;3;3
+31;Тополь;Воскресенье;79991111139;Газпром;neverinmylife30@unexisting.ru;0;6;2;5
+32;Сидор;Сидоров;79991111140;ИТ на заказ;neverinmylife31@unexisting.ru;0;7;1;4
+33;Елисей;Елисеев;79991111141;ИТ на заказ;neverinmylife32@unexisting.ru;0;8;5;1
+34;Иван;Абрамов;79991111142;ИТ на заказ;neverinmylife33@unexisting.ru;0;9;6;2

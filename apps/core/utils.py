@@ -40,3 +40,7 @@ def get_status_datasets() -> list[dict]:
 
 def get_roles_datasets() -> list[dict]:
     return read_file(file_name="roles.csv")
+
+
+def get_specialists_datasets() -> list[dict]:
+    return read_file(file_name="specialists.csv")

@@ -25,3 +25,13 @@ def update_specialist(instance: Specialist, data: OrderedDict) -> Specialist:
             setattr(instance, key, value)
     instance.save()
     return instance
+
+
+def bulk_create_specialists(data: list[dict]) -> None:
+    specs = [Specialist(**fields) for fields in data]
+    Specialist.objects.bulk_create(specs)
+    return None
+
+
+def specialists_are_in_db() -> bool:
+    return Specialist.objects.all().exists()

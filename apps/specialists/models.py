@@ -19,6 +19,9 @@ class Specialist(BaseModel):
         null=True,
     )
     email = models.EmailField(verbose_name="E-mail", unique=True)
+    company = models.CharField(
+        verbose_name="Компания", max_length=60, blank=True
+    )
     is_colleague = models.BooleanField(verbose_name="Сотрудник компании")
     city = models.ForeignKey(
         City,
@@ -49,4 +52,4 @@ class Specialist(BaseModel):
         default_related_name = "specialists"
 
     def __str__(self) -> str:
-        return f"{self.title}: {self.start_at}"
+        return f"{self.first_name} {self.last_name}"

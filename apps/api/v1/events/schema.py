@@ -41,13 +41,6 @@ events_schema = {
     ),
     "retrieve": extend_schema(
         summary="Просмотр мероприятия по ID",
-        examples=[
-            OpenApiExample(
-                "Ответ",
-                value=response_sample,
-                response_only=True,
-            ),
-        ],
     ),
     "create": extend_schema(
         summary="Добавление нового мероприятия",
