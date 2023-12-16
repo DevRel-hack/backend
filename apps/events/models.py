@@ -54,3 +54,6 @@ class Event(BaseModel):
         verbose_name = "Тип мероприятия"
         verbose_name_plural = "Типы мероприятий"
         default_related_name = "events"
+
+    def __str__(self) -> str:
+        return f"{self.title}: {self.start_at}"

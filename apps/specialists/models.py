@@ -7,6 +7,12 @@ from apps.core.models import BaseModel
 class Specialist(BaseModel):
     """Модель специалиста."""
 
+    first_name = models.CharField(
+        verbose_name="Имя", max_length=50, blank=True
+    )
+    last_name = models.CharField(
+        verbose_name="Фамилия", max_length=50, blank=True
+    )
     phone = models.CharField(
         verbose_name="Номер телефона",
         max_length=15,
@@ -33,7 +39,14 @@ class Specialist(BaseModel):
     )
     tools = models.ManyToManyField(
         Tool,
-        related_name="specialists",
         blank=True,
         verbose_name="Инструменты",
     )
+
+    class Meta:
+        verbose_name = "Специалист"
+        verbose_name_plural = "Специалисты"
+        default_related_name = "specialists"
+
+    def __str__(self) -> str:
+        return f"{self.title}: {self.start_at}"
