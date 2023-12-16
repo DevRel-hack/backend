@@ -63,3 +63,38 @@ class AttributesSerializer(serializers.Serializer):
     tags = TagSerializer(many=True)
     statuses = EventStatusSerializer(many=True)
     roles = RoleSerializer(many=True)
+
+
+class TagStatSerializer(TagSerializer):
+    visitors = serializers.IntegerField()
+
+    class Meta(TagSerializer.Meta):
+        fields = TagSerializer.Meta.fields + ("visitors",)
+
+
+class JobStatSerializer(JobSerializer):
+    visitors = serializers.IntegerField()
+
+    class Meta(JobSerializer.Meta):
+        fields = JobSerializer.Meta.fields + ("visitors",)
+
+
+class ToolStatSerializer(ToolSerializer):
+    visitors = serializers.IntegerField()
+
+    class Meta(ToolSerializer.Meta):
+        fields = ToolSerializer.Meta.fields + ("visitors",)
+
+
+class GradeStatSerializer(GradeSerializer):
+    visitors = serializers.IntegerField()
+
+    class Meta(GradeSerializer.Meta):
+        fields = GradeSerializer.Meta.fields + ("visitors",)
+
+
+class StatisticsSerializer(serializers.Serializer):
+    tags = TagStatSerializer(many=True)
+    jobs = JobStatSerializer(many=True)
+    grades = GradeStatSerializer(many=True)
+    tools = ToolStatSerializer(many=True)

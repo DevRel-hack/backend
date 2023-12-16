@@ -1,7 +1,7 @@
 from django.urls import include, path
 from rest_framework import routers
 
-from .attributes.views import AttributesView
+from .attributes.views import AttributesView, StatisticsView
 from .events.views import (
     EventViewset,
     ListCreateParticipantView,
@@ -21,6 +21,7 @@ router.register("events", EventViewset, basename="events")
 
 urlpatterns = [
     path("attributes", AttributesView.as_view(), name="attributes"),
+    path("statistics", StatisticsView.as_view(), name="statistics"),
     path(
         "events/<int:event_id>/participants/",
         ListCreateParticipantView.as_view(),

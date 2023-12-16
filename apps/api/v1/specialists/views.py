@@ -3,7 +3,7 @@ from rest_framework import viewsets, status
 from rest_framework.response import Response
 from rest_framework.decorators import action
 
-from apps.specialists.crud import list_specialists
+from apps.specialists.crud import list_specialists, retrieve_specialist
 from apps.specialists.services import upload_specialists
 
 from .filters import SpecialistFilterset
@@ -15,7 +15,7 @@ from . import serializers as ser
 class SpecialistsViewset(viewsets.ModelViewSet):
     """Работа со специалистами."""
 
-    queryset = list_specialists()
+    # queryset = list_specialists()
     http_method_names = ["get", "patch", "post", "delete"]
     filterset_class = SpecialistFilterset
 
@@ -23,6 +23,12 @@ class SpecialistsViewset(viewsets.ModelViewSet):
         if self.action == "retrieve":
             return ser.RetrieveSpecialistSerializer
         return ser.SpecialistSerializer
+
+    def get_queryset(self):
+        if self.action == "retrieve":
+            spec_id = self.kwargs.get("pk")
+            return retrieve_specialist(spec_id=spec_id)
+        return list_specialists()
 
     @action(methods=["post"], detail=False)
     def upload_specialists(self, request):
