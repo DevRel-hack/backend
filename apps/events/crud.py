@@ -41,10 +41,22 @@ def list_key_participants(event_id: int) -> QuerySet[Participant]:
     )
 
 
-# def list_key_participants() -> QuerySet[Participant]:
-#     a = (
-#         Participant.objects.all()
-#         .exclude(role_id=1)
-#         .select_related("specialist", "role")
-#     )
-#     return a
+def events_in_db() -> bool:
+    return Event.objects.exists()
+
+
+def bulk_create_events(dataset: list[dict]) -> None:
+    events = [Event(**fields) for fields in dataset]
+    Event.objects.bulk_create(events)
+
+
+def bulk_create_event_tags(data: list[dict]) -> None:
+    connection = [Event.tags.through(**fields) for fields in data]
+    Event.tags.through.objects.bulk_create(connection)
+    return None
+
+
+def bulk_create_participants(data: list[dict]) -> None:
+    parts = [Participant(**fields) for fields in data]
+    Participant.objects.bulk_create(parts)
+    return None

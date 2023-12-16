@@ -1,7 +1,10 @@
 from drf_spectacular.utils import extend_schema, extend_schema_view
-from rest_framework import generics, response, viewsets
+from rest_framework import generics, views, viewsets, status
+from rest_framework.decorators import action
+from rest_framework.response import Response
 
 from apps.events.crud import list_events, list_key_participants, retrieve_event
+from apps.events.services import upload_events
 
 from . import serializers as ser
 from .filters import EventFilterset
@@ -49,6 +52,17 @@ class ListCreateParticipantView(generics.ListCreateAPIView):
     def perform_create(self, serializer):
         event_id = self.kwargs.get("event_id")
         return serializer.save(event_id=event_id)
+
+
+class UploadEventsView(views.APIView):
+    def post(self, request):
+        success = upload_events()
+        if success:
+            return Response(status=status.HTTP_201_CREATED)
+        return Response(
+            data={"error": "Мероприятия уже загружены"},
+            status=status.HTTP_400_BAD_REQUEST,
+        )
 
 
 @extend_schema(tags=["participants"])

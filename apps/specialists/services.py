@@ -1,12 +1,15 @@
 from collections import OrderedDict
 
-from apps.core.utils import get_specialists_datasets
+from django.db.transaction import atomic
+
+from apps.core.utils import get_spec_tools_datasets, get_specialists_datasets
 
 from .crud import (
-    create_specialist,
-    update_specialist,
+    bulk_create_spec_tools,
     bulk_create_specialists,
+    create_specialist,
     specialists_are_in_db,
+    update_specialist,
 )
 from .models import Specialist
 
@@ -26,9 +29,12 @@ def edit_specialist(instance: Specialist, data: OrderedDict) -> Specialist:
     return specialist
 
 
+@atomic
 def upload_specialists() -> None:
     if not specialists_are_in_db():
-        dataset = get_specialists_datasets()
-        bulk_create_specialists(data=dataset)
+        spec_dataset = get_specialists_datasets()
+        bulk_create_specialists(data=spec_dataset)
+        spec_tools_datasets = get_spec_tools_datasets()
+        bulk_create_spec_tools(data=spec_tools_datasets)
         return True
     return False

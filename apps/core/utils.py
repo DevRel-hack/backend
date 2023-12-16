@@ -44,3 +44,23 @@ def get_roles_datasets() -> list[dict]:
 
 def get_specialists_datasets() -> list[dict]:
     return read_file(file_name="specialists.csv")
+
+
+def get_events_datasets() -> list[dict]:
+    return read_file(file_name="events.csv")
+
+
+def get_event_tags_datasets() -> list[dict]:
+    return read_file(file_name="event_tags.csv")
+
+
+def get_events_datasets() -> list[dict]:
+    return read_file(file_name="events.csv")
+
+
+def get_participants_datasets() -> list[dict]:
+    return read_file(file_name="participants.csv")
+
+
+def get_spec_tools_datasets() -> list[dict]:
+    return read_file(file_name="spec_tools.csv")

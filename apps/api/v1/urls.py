@@ -6,6 +6,7 @@ from .events.views import (
     EventViewset,
     ListCreateParticipantView,
     ParticipantObjView,
+    UploadEventsView,
 )
 from .specialists.views import SpecialistsViewset
 from .users.views import UserViewset
@@ -30,6 +31,7 @@ urlpatterns = [
         ParticipantObjView.as_view(),
         name="parts",
     ),
+    path("events/upload", UploadEventsView.as_view(), name="upload_events"),
     path("auth/", include("djoser.urls.jwt")),
     path("", include(router.urls)),
 ]

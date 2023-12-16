@@ -33,5 +33,11 @@ def bulk_create_specialists(data: list[dict]) -> None:
     return None
 
 
+def bulk_create_spec_tools(data: list[dict]) -> None:
+    specs = [Specialist.tools.through(**fields) for fields in data]
+    Specialist.tools.through.objects.bulk_create(specs)
+    return None
+
+
 def specialists_are_in_db() -> bool:
     return Specialist.objects.all().exists()

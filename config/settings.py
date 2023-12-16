@@ -13,8 +13,8 @@ SECRET_KEY = os.getenv("SECRET_KEY", default=get_random_secret_key())
 DEBUG = os.getenv("DEBUG", default="False") == "True"
 ALLOWED_HOSTS = os.getenv("ALLOWED_HOSTS", default="127.0.0.1").split(", ")
 CSRF_TRUSTED_ORIGINS = os.getenv("TRUSTED_ORIGINS", default="").split(", ")
-# CORS_ALLOWED_ORIGINS = os.getenv("TRUSTED_ORIGINS", default="").split(", ")
-CORS_ALLOW_ALL_ORIGINS = True
+CORS_ALLOWED_ORIGINS = os.getenv("TRUSTED_ORIGINS", default="").split(", ")
+# CORS_ALLOW_ALL_ORIGINS = True
 
 DJANGO_APPS = [
     "django.contrib.admin",
