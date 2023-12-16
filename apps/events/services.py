@@ -5,15 +5,15 @@ from .models import Event
 
 
 def add_event(data: OrderedDict) -> Event:
-    themes = data.pop("themes")
+    tags = data.pop("tags")
     event = create_event(data=data)
-    event.themes.set(themes)
+    event.tags.set(tags)
     return event
 
 
 def edit_event(instance: Event, data: OrderedDict) -> Event:
-    themes = data.pop("themes")
+    tags = data.pop("tags")
     event = update_event(event=instance, data=data)
-    event.tools.clear()
-    event.tools.set(themes)
+    event.tags.clear()
+    event.tags.set(tags)
     return event

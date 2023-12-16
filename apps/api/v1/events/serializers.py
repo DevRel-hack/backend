@@ -1,15 +1,9 @@
 from rest_framework import serializers
 
-from apps.events.models import Event, EventType
+from apps.events.models import Event
 from apps.events.services import add_event, edit_event
 
-from ..attributes.serializers import ThemeSerializer
-
-
-class EventTypeSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = EventType
-        fields = ("id", "title")
+from ..attributes.serializers import EventStatusSerializer, TagSerializer
 
 
 class EventSerializer(serializers.ModelSerializer):
@@ -19,11 +13,14 @@ class EventSerializer(serializers.ModelSerializer):
             "id",
             "status",
             "title",
+            "description",
             "start_at",
+            "is_internal",
             "form",
             "place",
-            "type",
-            "themes",
+            "url",
+            "tags",
+            "comments",
         )
 
     def create(self, validated_data):
@@ -34,6 +31,6 @@ class EventSerializer(serializers.ModelSerializer):
 
     def to_representation(self, instance):
         rep = super().to_representation(instance)
-        rep["type"] = EventTypeSerializer(instance.type).data
-        rep["themes"] = ThemeSerializer(instance.themes, many=True).data
+        rep["status"] = EventStatusSerializer(instance.status).data
+        rep["tags"] = TagSerializer(instance.tags, many=True).data
         return rep

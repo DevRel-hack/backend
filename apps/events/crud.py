@@ -2,15 +2,11 @@ from collections import OrderedDict
 
 from django.db.models import QuerySet
 
-from .models import Event, EventType
+from .models import Event
 
 
 def list_events() -> QuerySet[Event]:
-    return Event.objects.select_related("type").prefetch_related("themes")
-
-
-def list_event_types() -> QuerySet[EventType]:
-    return EventType.objects.all()
+    return Event.objects.select_related("status").prefetch_related("tags")
 
 
 def create_event(data: OrderedDict) -> Event:

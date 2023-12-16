@@ -6,7 +6,6 @@ from apps.core.utils import (
     get_cities_datasets,
     get_grades_datasets,
     get_jobs_datasets,
-    get_themes_datasets,
     get_tools_datasets,
 )
 
@@ -35,14 +34,6 @@ def create_jobs(apps, schema_editor):
         Job.objects.bulk_create(types, ignore_conflicts=True)
 
 
-def create_themes(apps, schema_editor):
-    Theme: models.Model = apps.get_model("attributes", "Theme")
-    datasets = get_themes_datasets()
-    if datasets:
-        types = [Theme(**fields) for fields in datasets]
-        Theme.objects.bulk_create(types, ignore_conflicts=True)
-
-
 def create_tools(apps, schema_editor):
     Tool: models.Model = apps.get_model("attributes", "Tool")
     datasets = get_tools_datasets()
@@ -60,6 +51,5 @@ class Migration(migrations.Migration):
         migrations.RunPython(create_cities),
         migrations.RunPython(create_grades),
         migrations.RunPython(create_jobs),
-        migrations.RunPython(create_themes),
         migrations.RunPython(create_tools),
     ]

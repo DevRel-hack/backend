@@ -1,14 +1,18 @@
 from drf_spectacular.utils import extend_schema, OpenApiExample
 
 
-response_sample = {
-    "status": "idea",
+request_sample = {
+    "status": 1,
     "title": "Новый Хакатон",
+    "description": "Много слов о мероприятии",
     "start_at": "16.12.2023 18:00",
+    "is_internal": False,
     "form": "on",
-    "place": "string",
+    "place": "интернет",
+    "url": "https://linktoevent.com",
     "type": 1,
-    "themes": [1, 2, 3],
+    "tags": [1, 2, 3],
+    "comments": "Комментарии",
 }
 
 events_schema = {
@@ -21,17 +25,11 @@ events_schema = {
                 "Valid example 1",
                 summary="short summary",
                 description="longer description",
-                value=[response_sample],
-                response_only=True,
+                value=request_sample,
+                request_only=True,
             ),
         ],
     ),
     "partial_update": extend_schema(summary="Изменение мероприятия"),
     "destroy": extend_schema(summary="Удаление мероприятия"),
-}
-
-
-events_types_schema = {
-    "list": extend_schema(summary="Список типов мероприятий"),
-    "retrieve": extend_schema(summary="Просмотр типа мероприятия по ID"),
 }

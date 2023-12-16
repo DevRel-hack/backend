@@ -2,7 +2,7 @@ from django.urls import include, path
 from rest_framework import routers
 
 from .attributes.views import AttributesView
-from .events.views import EventViewset, EventTypeViewset
+from .events.views import EventViewset
 from .specialists.views import SpecialistsViewset
 from .users.views import UserViewset
 
@@ -12,7 +12,6 @@ router = routers.DefaultRouter()
 router.register("users", UserViewset, basename="users")
 router.register("specialists", SpecialistsViewset, basename="specialists")
 router.register("events", EventViewset, basename="events")
-router.register("event_types", EventTypeViewset, basename="event_types")
 
 
 urlpatterns = [

@@ -1,6 +1,14 @@
 from rest_framework import serializers
 
-from apps.attributes.models import City, Tool, Job, Grade, Theme
+from apps.attributes.models import (
+    City,
+    Tool,
+    Job,
+    Grade,
+    Tag,
+    EventStatus,
+    Role,
+)
 
 
 class CitySerializer(serializers.ModelSerializer):
@@ -27,9 +35,21 @@ class GradeSerializer(serializers.ModelSerializer):
         fields = ("id", "title")
 
 
-class ThemeSerializer(serializers.ModelSerializer):
+class TagSerializer(serializers.ModelSerializer):
     class Meta:
-        model = Theme
+        model = Tag
+        fields = ("id", "title")
+
+
+class EventStatusSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = EventStatus
+        fields = ("id", "title")
+
+
+class RoleSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Role
         fields = ("id", "title")
 
 
@@ -40,4 +60,6 @@ class AttributesSerializer(serializers.Serializer):
     tools = ToolSerializer(many=True)
     jobs = JobSerializer(many=True)
     grades = GradeSerializer(many=True)
-    themes = ThemeSerializer(many=True)
+    tags = TagSerializer(many=True)
+    statuses = EventStatusSerializer(many=True)
+    roles = RoleSerializer(many=True)

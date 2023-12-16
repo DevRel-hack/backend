@@ -1,6 +1,6 @@
 from django.db.models import QuerySet
 
-from .models import City, Tool, Job, Grade, Theme
+from .models import City, Tool, Job, Grade, Tag, EventStatus, Role
 
 
 def list_cities() -> QuerySet[City]:
@@ -19,8 +19,16 @@ def list_grades() -> QuerySet[Grade]:
     return Grade.objects.all()
 
 
-def list_themes() -> QuerySet[Theme]:
-    return Theme.objects.all()
+def list_tags() -> QuerySet[Tag]:
+    return Tag.objects.all()
+
+
+def list_roles() -> QuerySet[Role]:
+    return Role.objects.all()
+
+
+def list_statuses() -> QuerySet[EventStatus]:
+    return EventStatus.objects.all()
 
 
 def get_attributes() -> dict[str, QuerySet]:
@@ -29,5 +37,7 @@ def get_attributes() -> dict[str, QuerySet]:
         "tools": list_tools(),
         "jobs": list_jobs(),
         "grades": list_grades(),
-        "themes": list_themes(),
+        "tags": list_tags(),
+        "roles": list_roles(),
+        "statuses": list_statuses(),
     }

@@ -16,8 +16,3 @@ class SpecialistsViewset(viewsets.ModelViewSet):
     queryset = list_specialists()
     serializer_class = SpecialistSerializer
     http_method_names = ["get", "patch", "post", "delete"]
-
-    @action(methods=["post"], detail=False)
-    def upload_specialists(self, request):
-        # TODO реализовать загрузку
-        return Response(status=status.HTTP_201_CREATED)

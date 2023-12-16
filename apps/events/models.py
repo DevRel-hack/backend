@@ -1,15 +1,15 @@
 from django.db import models
 
-from apps.attributes.models import Theme
-from apps.core.models import BaseModel, TitledModel
+from apps.attributes.models import Tag, EventStatus
+from apps.core.models import BaseModel
 
 
-class EventType(TitledModel):
-    """Модель типа мероприятия."""
+# class EventType(TitledModel):
+#     """Модель типа мероприятия."""
 
-    class Meta:
-        verbose_name = "Тип мероприятия"
-        verbose_name_plural = "Типы мероприятий"
+#     class Meta:
+#         verbose_name = "Тип мероприятия"
+#         verbose_name_plural = "Типы мероприятий"
 
 
 class Event(BaseModel):
@@ -27,25 +27,30 @@ class Event(BaseModel):
         OFFLINE = "off", "Offline"
         BOTH = "both", "Online + Offline"
 
-    status = models.CharField(
-        verbose_name="Текущий статус", max_length=5, choices=Status.choices
+    status = models.ForeignKey(
+        EventStatus, on_delete=models.PROTECT, verbose_name="Статус"
     )
     title = models.CharField(
         verbose_name="Название мероприятия", max_length=200
     )
+    description = models.TextField(
+        verbose_name="Описание", max_length=5000, blank=True
+    )
     start_at = models.DateTimeField(verbose_name="Время и дата начала")
+    is_internal = models.BooleanField(verbose_name="Мероприятие внутреннее")
     form = models.CharField(
         verbose_name="Формат", max_length=5, choices=Format.choices
     )
-    place = models.CharField(verbose_name="Место проведения", max_length=255)
-    type = models.ForeignKey(
-        EventType,
-        on_delete=models.PROTECT,
-        related_name="events",
-        verbose_name="Тип мероприятия",
+    place = models.CharField(
+        verbose_name="Место проведения", max_length=255, blank=True
     )
-    themes = models.ManyToManyField(Theme, related_name="events")
+    tags = models.ManyToManyField(Tag, verbose_name="Теги", blank=True)
+    url = models.URLField(
+        verbose_name="Ссылка на страницу мероприятия", blank=True
+    )
+    comments = models.TextField(verbose_name="Комментарии", blank=True)
 
     class Meta:
         verbose_name = "Тип мероприятия"
         verbose_name_plural = "Типы мероприятий"
+        default_related_name = "events"

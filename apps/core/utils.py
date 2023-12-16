@@ -22,8 +22,8 @@ def get_jobs_datasets() -> list[dict]:
     return read_file(file_name="jobs.csv")
 
 
-def get_themes_datasets() -> list[dict]:
-    return read_file(file_name="themes.csv")
+def get_tags_datasets() -> list[dict]:
+    return read_file(file_name="tags.csv")
 
 
 def get_tools_datasets() -> list[dict]:
@@ -32,3 +32,11 @@ def get_tools_datasets() -> list[dict]:
 
 def get_event_types_datasets() -> list[dict]:
     return read_file(file_name="event_types.csv")
+
+
+def get_status_datasets() -> list[dict]:
+    return read_file(file_name="status.csv")
+
+
+def get_roles_datasets() -> list[dict]:
+    return read_file(file_name="roles.csv")

@@ -25,12 +25,12 @@ class Job(TitledModel):
         verbose_name_plural = "Направления"
 
 
-class Theme(TitledModel):
-    """Темы."""
+class Tag(TitledModel):
+    """Теги."""
 
     class Meta:
-        verbose_name = "Направление"
-        verbose_name_plural = "Направления"
+        verbose_name = "Тег"
+        verbose_name_plural = "Теги"
 
 
 class Grade(TitledModel):
@@ -39,3 +39,19 @@ class Grade(TitledModel):
     class Meta:
         verbose_name = "Уровень"
         verbose_name_plural = "Уровни"
+
+
+class EventStatus(TitledModel):
+    """Статус проведения мероприятия."""
+
+    class Meta:
+        verbose_name = "Статус мероприятия"
+        verbose_name_plural = "Статусы мероприятий"
+
+
+class Role(TitledModel):
+    """Роли участников мероприятий."""
+
+    class Meta:
+        verbose_name = "Роль участника"
+        verbose_name_plural = "Роли участников"
