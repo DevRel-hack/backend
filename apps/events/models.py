@@ -1,7 +1,8 @@
 from django.db import models
 
-from apps.attributes.models import Tag, EventStatus
+from apps.attributes.models import Tag, EventStatus, Role
 from apps.core.models import BaseModel
+from apps.specialists.models import Specialist
 
 
 # class EventType(TitledModel):
@@ -51,9 +52,33 @@ class Event(BaseModel):
     comments = models.TextField(verbose_name="Комментарии", blank=True)
 
     class Meta:
-        verbose_name = "Тип мероприятия"
-        verbose_name_plural = "Типы мероприятий"
+        verbose_name = "Мероприятие"
+        verbose_name_plural = "Мероприятия"
         default_related_name = "events"
 
     def __str__(self) -> str:
         return f"{self.title}: {self.start_at}"
+
+
+class Participant(BaseModel):
+    """Модель участника мероприятия."""
+
+    event = models.ForeignKey(
+        Event, on_delete=models.CASCADE, verbose_name="Мероприятие"
+    )
+    specialist = models.ForeignKey(
+        Specialist, on_delete=models.CASCADE, verbose_name="Участник"
+    )
+    role = models.ForeignKey(
+        Role, on_delete=models.PROTECT, verbose_name="Роль"
+    )
+    comment = models.CharField(verbose_name="Комментарии", max_length=255)
+
+    class Meta:
+        ordering = ("-event_id", "role_id")
+        verbose_name = "Участник"
+        verbose_name_plural = "Участники"
+        default_related_name = "participants"
+
+    def __str__(self) -> str:
+        return f"Участник {self.specialist_id} в мероприятии {self.event_id}"
