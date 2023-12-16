@@ -17,6 +17,8 @@ class SpecialistSerializer(serializers.ModelSerializer):
         model = Specialist
         fields = (
             "id",
+            "first_name",
+            "last_name",
             "phone",
             "email",
             "is_colleague",
