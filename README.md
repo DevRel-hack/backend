@@ -1,11 +1,5 @@
 # DEVREL HACKATHON: DevRel Hack 2.0. Команда 7Eleven.
-https://a8a70fb723a.vps.myjino.ru/<br>
-На текущем этапе фронт не разворачивается на сервере - только локально см.инструкцию<br>
-данные для пробного входа на сайт и в админ-панель
-```
-email: admin@admin.admin
-password: Password-123
-```
+
 ## Задача
 Ваша цель - создать инструмент, который сделает работу DevRel более эффективной, позволив легко управлять и взаимодействовать с участниками ИТ-сообщества.<br>
 Сервис должен включать в себя следующие ключевые функциональности:<br>
@@ -40,6 +34,9 @@ password: Password-123
 График активности регистраций по выбранным периодам.<br>
 Портрет участника мероприятий в разрезе тегов мероприятий/должности/навыков/уровня знаний<br>
 
+## Figma
+https://www.figma.com/file/BHx1XvXp1SEpR47URlaFax/%D0%A5%D0%B0%D0%BA%D0%B0%D1%82%D0%BE%D0%BD-DevRel-2023?type=design&node-id=89-7478&mode=design&t=vv4E1vhwWtQzIBsU-0
+
 
 ##  BACKEND: 
 ### Инструменты:
@@ -66,6 +63,10 @@ https://a8a70fb723a.vps.myjino.ru/api/schema/swagger/#
 Авторизация через headers:
 Authorization: JWT <access-token>
 ```
+
+## Frontend:
+https://a8a70fb723a.vps.myjino.ru/<br>
+На текущем этапе фронт не разворачивается на сервере - только локально, см.инструкцию.<br>
 
 ### Описание возможностей BACKEND
 ```
