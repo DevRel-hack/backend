@@ -7,6 +7,7 @@ from .models import Event, Participant
 class EventAdmin(admin.ModelAdmin):
     list_display = ("id", "status", "title", "start_at", "is_internal", "form")
     empty_value_display = "-пусто-"
+    autocomplete_fields = ("tags",)
 
 
 @admin.register(Participant)

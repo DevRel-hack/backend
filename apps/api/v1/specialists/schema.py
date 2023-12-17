@@ -35,4 +35,5 @@ specialists_schema = {
     "create": extend_schema(summary="Добавление нового специалиста"),
     "partial_update": extend_schema(summary="Изменение специалиста"),
     "destroy": extend_schema(summary="Удаление специалиста"),
+    "upload_fixtures": extend_schema(summary="Загрузка фикстур специалистов"),
 }

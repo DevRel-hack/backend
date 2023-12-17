@@ -35,6 +35,9 @@ class Event(BaseModel):
         verbose_name="Ссылка на страницу мероприятия", blank=True
     )
     comments = models.TextField(verbose_name="Комментарии", blank=True)
+    registered = models.IntegerField(
+        verbose_name="Кол-во регистраций", blank=True, null=True
+    )
 
     class Meta:
         verbose_name = "Мероприятие"

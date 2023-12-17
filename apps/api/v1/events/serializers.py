@@ -42,6 +42,10 @@ class EditParticipantSerializer(BaseParticipantSerializer):
 
 
 class BaseEventSerializer(serializers.ModelSerializer):
+    visited = serializers.IntegerField()
+    speakers = serializers.IntegerField()
+    kpi = serializers.IntegerField()
+
     class Meta:
         model = Event
         fields = (
@@ -56,6 +60,10 @@ class BaseEventSerializer(serializers.ModelSerializer):
             "url",
             "tags",
             "comments",
+            "visited",
+            "speakers",
+            "kpi",
+            "registered",
         )
 
     def create(self, validated_data):
@@ -72,6 +80,7 @@ class ListEventSerializer(BaseEventSerializer):
 
 class RetrieveEventSerializer(BaseEventSerializer):
     participants = ParticipantSerializer(many=True)
+    tags = TagSerializer(many=True)
 
     class Meta(BaseEventSerializer.Meta):
         fields = BaseEventSerializer.Meta.fields + ("participants",)

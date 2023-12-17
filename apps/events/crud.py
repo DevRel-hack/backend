@@ -1,22 +1,78 @@
 from collections import OrderedDict
 
-from django.db.models import QuerySet, Prefetch
+from django.db.models import (
+    QuerySet,
+    Prefetch,
+    Count,
+    Q,
+    Value,
+    F,
+    IntegerField,
+    Case,
+    When,
+)
 
 from .models import Event, Participant
 
 
 def list_events() -> QuerySet[Event]:
-    return Event.objects.select_related("status").prefetch_related("tags")
+    return (
+        Event.objects.select_related("status")
+        .prefetch_related("tags")
+        .annotate(
+            visited=Count(
+                "participants",
+                distinct=True,
+                filter=Q(participants__role_id=1),
+            ),
+            speakers=Count(
+                "participants",
+                distinct=True,
+                filter=Q(participants__role_id=2),
+            ),
+            kpi=Case(
+                When(
+                    registered__gte=0,
+                    then=(100 * F("visited") / F("registered")),
+                ),
+                default=Value(0),
+                output_fields=IntegerField(),
+            ),
+        )
+    )
 
 
 def retrieve_event(event_id: int) -> Event:
     # исправить запросы
-    return Event.objects.filter(id=event_id).prefetch_related(
-        Prefetch(
-            "participants",
-            queryset=Participant.objects.filter(event_id=event_id)
-            .exclude(role_id=1)
-            .select_related("specialist", "role"),
+    return (
+        Event.objects.filter(id=event_id)
+        .prefetch_related(
+            Prefetch(
+                "participants",
+                queryset=Participant.objects.filter(event_id=event_id)
+                .exclude(role_id=1)
+                .select_related("specialist", "role"),
+            )
+        )
+        .annotate(
+            visited=Count(
+                "participants",
+                distinct=True,
+                filter=Q(participants__role_id=1),
+            ),
+            speakers=Count(
+                "participants",
+                distinct=True,
+                filter=Q(participants__role_id=2),
+            ),
+            kpi=Case(
+                When(
+                    registered__gte=0,
+                    then=(100 * F("visited") / F("registered")),
+                ),
+                default=Value(0),
+                output_fields=IntegerField(),
+            ),
         )
     )
 

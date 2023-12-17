@@ -15,7 +15,6 @@ from . import serializers as ser
 class SpecialistsViewset(viewsets.ModelViewSet):
     """Работа со специалистами."""
 
-    # queryset = list_specialists()
     http_method_names = ["get", "patch", "post", "delete"]
     filterset_class = SpecialistFilterset
 
@@ -31,7 +30,7 @@ class SpecialistsViewset(viewsets.ModelViewSet):
         return list_specialists()
 
     @action(methods=["post"], detail=False)
-    def upload_specialists(self, request):
+    def upload_fixtures(self, request):
         success = upload_specialists()
         if success:
             return Response(status=status.HTTP_201_CREATED)

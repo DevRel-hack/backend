@@ -54,7 +54,10 @@ class ListCreateParticipantView(generics.ListCreateAPIView):
         return serializer.save(event_id=event_id)
 
 
+@extend_schema(summary="Загрузка фикстур мероприятий")
 class UploadEventsView(views.APIView):
+    """Загрузка фикстур."""
+
     def post(self, request):
         success = upload_events()
         if success:
