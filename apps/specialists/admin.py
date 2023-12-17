@@ -16,3 +16,4 @@ class SpecialistAdmin(admin.ModelAdmin):
     )
     empty_value_display = "-пусто-"
     search_fields = ("email", "city", "grade", "tools", "job")
+    autocomplete_fields = ("tools",)
