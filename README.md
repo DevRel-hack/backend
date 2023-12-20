@@ -37,6 +37,9 @@
 ## Figma
 https://www.figma.com/file/BHx1XvXp1SEpR47URlaFax/%D0%A5%D0%B0%D0%BA%D0%B0%D1%82%D0%BE%D0%BD-DevRel-2023?type=design&node-id=89-7478&mode=design&t=vv4E1vhwWtQzIBsU-0
 
+## Frontend:
+Код: https://github.com/DevRel-hack/frontend<br>
+Сборка: https://devrel-hack.github.io/dev-rel-me/entry/login
 
 ##  BACKEND: 
 ### Инструменты:
@@ -49,10 +52,6 @@ https://www.figma.com/file/BHx1XvXp1SEpR47URlaFax/%D0%A5%D0%B0%D0%BA%D0%B0%D1%82
 ![image](https://img.shields.io/badge/Nginx-009639?style=for-the-badge&logo=nginx&logoColor=white)
 ![image](https://img.shields.io/badge/Poetry-053766?style=for-the-badge&logo=Sailfish%20OS&logoColor=white)
 
-
-## Frontend:
-Код: https://github.com/DevRel-hack/frontend<br>
-Сборка: https://devrel-hack.github.io/dev-rel-me/entry/login
 
 ### Описание возможностей BACKEND (возможности прототипа отличаются от концепта выше)
 ```
