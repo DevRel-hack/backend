@@ -50,20 +50,6 @@ https://www.figma.com/file/BHx1XvXp1SEpR47URlaFax/%D0%A5%D0%B0%D0%BA%D0%B0%D1%82
 ![image](https://img.shields.io/badge/Poetry-053766?style=for-the-badge&logo=Sailfish%20OS&logoColor=white)
 
 
-### Доступ в админ-панель:
-https://a8a70fb723a.vps.myjino.ru/admin 
-```
-email: admin@admin.admin
-password: Password-123
-```
-
-### API-документация:
-https://a8a70fb723a.vps.myjino.ru/api/schema/swagger/#
-```
-Авторизация через headers:
-Authorization: JWT <access-token>
-```
-
 ## Frontend:
 https://a8a70fb723a.vps.myjino.ru/<br>
 На текущем этапе фронт не разворачивается на сервере - только локально, см.инструкцию.<br>
@@ -93,8 +79,21 @@ cd backend/deploy
 docker compose up -d --build
 ```
 Сервис доступен по адресу http://127.0.0.1/<br>
-В базе данных уже есть Суперпользователь с указанными в .env данными (или данными по умолчанию выше) и загружены файлы:
+В базе данных уже есть Суперпользователь с указанными в .env данными (или данными по умолчанию выше). Для загрузки фикстур людей и мероприятий предусмотрены соответствующие эндпонты.
 
+### Доступ в админ-панель:
+http://127.0.0.1/admin 
+```
+email: admin@admin.admin
+password: Password-123
+```
+
+### API-документация:
+http://127.0.0.1/api/schema/swagger/#
+```
+Авторизация через headers:
+Authorization: JWT <access-token>
+```
 
 ## Команда
 ### Project Manger
